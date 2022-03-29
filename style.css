@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.container{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    justify-items: center;
+}
+
+.greensquare{
+    background-color: green;
+    width: 300px;
+    height: 300px;
+    border-top-left-radius: 100%;
+    margin: 0 10px 10px 0;
+}
+
+.bluesquare{
+    background-color: blue;
+    width: 300px;
+    height: 300px;
+    border-bottom-right-radius: 100%;
+}
+
+.redsquare{
+    background-color: red;
+    width: 300px;
+    height: 300px;
+    border-bottom-left-radius: 100%;
+    margin: 0 10px 0 0;
+}
+
+.yellowsquare{
+    background-color: yellow;
+    width: 300px;
+    height: 300px;
+    border-top-right-radius: 100%;
+}
+
+.circle{
+    background-color:aquamarine;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    position: relative;
+    top: -450px;
+    left: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.active{
+    /*transform: scale();
+    transition
+    box-shadow
+    brilho
+*/
+}
+
+.redsquare:hover{
+    cursor: pointer;
+}
+
+.yellowsquare:hover{
+    cursor: pointer;
+}
+
+.greensquare:hover{
+    cursor: pointer;
+}
+
+.bluesquare:hover{
+    cursor: pointer;
+}
