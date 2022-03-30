@@ -4,7 +4,6 @@ body{
 }
 
 .container{
-    position: absolute;
     display: flex;
     flex-wrap: wrap;
     width: 800px;
