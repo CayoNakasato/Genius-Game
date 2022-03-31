@@ -4,8 +4,9 @@ const colorSelected = []
 function criarTabuleiro () {
     const main = document.querySelector('#main');
     const getInput = document.querySelector('#inputName');
-    
     main.innerHTML = `
+    <h1>GENIUS GAME</h1>
+    <p>Acerte as cores na sequência <strong>correta</strong> para marcar pontos. Caso erre você perde o jogo!</p>
     <div class="container">
         <div id = '1' class="greensquare square"></div>
         <div id = '2' class="yellowsquare square"></div>
