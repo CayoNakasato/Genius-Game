@@ -1,5 +1,6 @@
 const colorClicked = [];
 const colorSelected = [] 
+
 function criarTabuleiro () {
     const main = document.querySelector('#main');
     const getInput = document.querySelector('#inputName');
@@ -58,7 +59,6 @@ function criarTabuleiro () {
 //     main.appendChild(container)
 //}
 
-
 function criarModal () {
     const main = document.querySelector('#main');
 
@@ -92,7 +92,6 @@ function criarModal () {
 }
 
 criarModal();
-
 
 function getColorClicked(e){
     colorClicked.push(+e.target.id)

@@ -55,12 +55,28 @@ body{
     font-weight: 600;
 }
 
-.active{
-    /*transform: scale();
-    transition
-    box-shadow
-    brilho
-*/
+.activeGreen{
+    transform: scale(1.05);
+    box-shadow: -1px 11px 31px -4px rgb(13, 248, 5);
+
+}
+
+.activeYellow{
+    transform: scale(1.05);
+    box-shadow: -1px 11px 31px -4px rgb(249, 253, 21);
+
+}
+
+.activeRed{
+    transform: scale(1.05);
+    box-shadow: -1px 11px 31px -4px rgb(253, 124, 107);
+
+}
+
+.activeBlue{
+    transform: scale(1.05);
+    box-shadow: -1px 11px 31px -4px rgb(7, 255, 243);
+
 }
 
 .redsquare:hover{
