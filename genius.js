@@ -52,14 +52,14 @@ function inicioJogo() {
     interface.innerHTML = " ";
     interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
 
-    setTimeout(ordemCores(), 11000);
+    setTimeout(ordemCores(), 1000);
 }
 
 let ordemCor = [];
 
 function ordemCores() {
     ordemCor.push(Math.floor(Math.random()*(4-1)+1))
-    setTimeout(brilhaCor(), 2000);    
+    setTimeout(brilhaCor, 2000);    
 }
 
 function brilhaCor() {
@@ -67,31 +67,32 @@ function brilhaCor() {
     const amarelo = document.getElementById('2');
     const vermelho = document.getElementById('3')
     const azul = document.getElementById('4')
+    
     for (let i =0; i < ordemCor.length; i++) {
         if(ordemCor[i] == verde.id) {
             verde.classList.add('activeGreen')
             console.log("verde")
             setTimeout(() => {
                 verde.classList.remove('ActiveGreen')
-            }, 3000);
+            }, 2000);
         } else if (ordemCor[i] == amarelo.id) {
             amarelo.classList.add('activeYellow')
             console.log("amarelo")
             setTimeout(() => {
                 verde.classList.remove('ActiveYellow')
-            }, 3000);
+            }, 2000);
         } else if (ordemCor[i] == vermelho.id) {
             vermelho.classList.add('activeRed')
             console.log("vermelho")
             setTimeout(() => {
                 verde.classList.remove('ActiveRed')
-            }, 3000);
+            }, 2000);
         } else if (ordemCor[i] == azul.id) {
             azul.classList.add('activeBlue')
             console.log("azul")
             setTimeout(() => {
                 verde.classList.remove('ActiveBlue')
-            }, 3000);
+            }, 2000);
         }
     }   
 }
