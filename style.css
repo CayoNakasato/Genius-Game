@@ -62,8 +62,44 @@ p{
     align-items: center;
     font-size: 20px;
     font-weight: 600;
-    box-shadow: 0px 0px 0px 5px black;
 }
+
+@keyframes animacaoCor {
+    50% {
+        animation-duration: 1s;
+        
+    }
+   
+}
+
+.activeGreen{
+    transform: scale(1.05);
+    background-color: rgb(13, 248, 5);    ;
+    box-shadow: -1px 11px 31px -4px rgb(13, 248, 5);
+
+}
+
+.activeYellow{
+    transform: scale(1.05);
+    background-color: rgb(249, 253, 21);
+    box-shadow: -1px 11px 31px -4px rgb(249, 253, 21);
+
+}
+
+.activeRed{
+    transform: scale(1.05);
+    background-color: rgb(253, 124, 107);
+    box-shadow: -1px 11px 31px -4px rgb(253, 124, 107);
+
+}
+
+.activeBlue{
+    background-color: rgb(7, 255, 243);    ;
+    transform: scale(1.05);
+    box-shadow: -1px 11px 31px -4px rgb(7, 255, 243);
+
+}
+
 
 .redsquare:hover{
     cursor: pointer;

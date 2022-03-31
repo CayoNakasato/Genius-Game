@@ -15,6 +15,7 @@ function criarTabuleiro () {
         <div id = 'interface' class="circle">Bem vindo ${getInput.value}!<br>Boa Sorte</div>
     </div>
     `
+   setTimeout(inicioJogo, 3000);
     const getClickedgreen =  document.querySelector('.greensquare')
     getClickedgreen.addEventListener("click", getColorClicked )
 
@@ -68,6 +69,8 @@ function criarModal () {
     const form = document.createElement('form');
     const label = document.createElement('label');
     const input = document.createElement('input');
+    input.id = "inputName";
+
     const button = document.createElement('button');
 
     modalSection.id = "modalSection"
@@ -94,6 +97,55 @@ function criarModal () {
 
 criarModal();
 
+function inicioJogo() {
+    const interface = document.querySelector("#interface");
+    interface.innerHTML = " ";
+    interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
+
+    setTimeout(ordemCores(), 1000);
+}
+
+let ordemCor = [];
+
+function ordemCores() {
+    ordemCor.push(Math.floor(Math.random()*(4-1)+1))
+    setTimeout(brilhaCor, 2000);    
+}
+
+function brilhaCor() {
+    const verde = document.getElementById('1');
+    const amarelo = document.getElementById('2');
+    const vermelho = document.getElementById('3')
+    const azul = document.getElementById('4')
+    
+    for (let i =0; i < ordemCor.length; i++) {
+        if(ordemCor[i] == verde.id) {
+            verde.classList.add('activeGreen')
+            console.log("verde")
+            setTimeout(() => {
+                verde.classList.remove('ActiveGreen')
+            }, 2000);
+        } else if (ordemCor[i] == amarelo.id) {
+            amarelo.classList.add('activeYellow')
+            console.log("amarelo")
+            setTimeout(() => {
+                verde.classList.remove('ActiveYellow')
+            }, 2000);
+        } else if (ordemCor[i] == vermelho.id) {
+            vermelho.classList.add('activeRed')
+            console.log("vermelho")
+            setTimeout(() => {
+                verde.classList.remove('ActiveRed')
+            }, 2000);
+        } else if (ordemCor[i] == azul.id) {
+            azul.classList.add('activeBlue')
+            console.log("azul")
+            setTimeout(() => {
+                verde.classList.remove('ActiveBlue')
+            }, 2000);
+        }
+    }   
+}
 function getColorClicked(e){
     colorClicked.push(+e.target.id)
     console.log(colorClicked);
