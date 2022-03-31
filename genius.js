@@ -59,12 +59,6 @@ function criarTabuleiro () {
 //}
 
 
-function colorRandom(){
-    colorSelected.push(Math.random() * (4-1) - 1)
-    
-}
-
-
 function criarModal () {
     const main = document.querySelector('#main');
 
