@@ -64,42 +64,54 @@ p{
     font-weight: 600;
 }
 
-@keyframes animacaoCor {
+@keyframes animacaoGreen {
     50% {
-        animation-duration: 1s;
-        
+        transform: scale(1.05);
+        background-color: rgb(13, 248, 5);
+        box-shadow: -1px 11px 31px -4px rgb(13, 248, 5);
     }
-   
+}
+@keyframes animacaoYellow{
+    50% {
+        transform: scale(1.05);
+        background-color: rgb(249, 253, 21);
+        box-shadow: -1px 11px 31px -4px rgb(249, 253, 21);
+    }
+}
+@keyframes animacaoRed {
+    50% {
+        transform: scale(1.05);
+        background-color: rgb(253, 124, 107);
+        box-shadow: -1px 11px 31px -4px rgb(253, 124, 107);
+    }
+}
+@keyframes animacaoBlue{
+    50% {
+        background-color: rgb(7, 255, 243);    ;
+        transform: scale(1.05);
+        box-shadow: -1px 11px 31px -4px rgb(7, 255, 243);
+    }
 }
 
 .activeGreen{
-    transform: scale(1.05);
-    background-color: rgb(13, 248, 5);    ;
-    box-shadow: -1px 11px 31px -4px rgb(13, 248, 5);
-
+    animation-name: animacaoGreen;
+    animation-duration: 1s;
 }
 
 .activeYellow{
-    transform: scale(1.05);
-    background-color: rgb(249, 253, 21);
-    box-shadow: -1px 11px 31px -4px rgb(249, 253, 21);
-
+    animation-name: animacaoYellow;
+    animation-duration: 1s;
 }
 
 .activeRed{
-    transform: scale(1.05);
-    background-color: rgb(253, 124, 107);
-    box-shadow: -1px 11px 31px -4px rgb(253, 124, 107);
-
+    animation-name: animacaoRed;
+    animation-duration: 1s;
 }
 
 .activeBlue{
-    background-color: rgb(7, 255, 243);    ;
-    transform: scale(1.05);
-    box-shadow: -1px 11px 31px -4px rgb(7, 255, 243);
-
+    animation-name: animacaoBlue;
+    animation-duration: 1s;
 }
-
 
 .redsquare:hover{
     cursor: pointer;

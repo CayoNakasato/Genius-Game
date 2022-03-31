@@ -1,5 +1,6 @@
 const colorClicked = [];
-const colorSelected = [] 
+let ordemCor = [];
+
 
 function criarTabuleiro () {
     const main = document.querySelector('#main');
@@ -28,38 +29,6 @@ function criarTabuleiro () {
     const getClickedblue =  document.querySelector('.bluesquare')
     getClickedblue.addEventListener("click", getColorClicked )
 }
-
-//  function alo(){
-//      const container = document.createElement('div');
-//     const greensquare = document.createElement('div');
-//     const yellowsquare = document.createElement('div');
-//     const redsquare = document.createElement('div');
-//     const bluesquare = document.createElement('div');
-//     const circle = document.createElement('div');
-
-//     container.classList.add('container');
-//     greensquare.classList.add('greensquare square');
-//     yellowsquare.classList.add('yellowsquare square');
-//     redsquare.classList.add('redsquare square');
-//     bluesquare.classList.add('bluesquare square');
-//     circle.classList.add('cirlce');
-
-//     greensquare.id = "1";
-//     yellowsquare.id = "2";
-//     redsquare.id = "3";
-//     bluesquare.id = "4";
-//     circle.id = "interface";
-
-//     circle.innerText = `Bem vindo ${getInput.value}!<br>Boa Sorte`;
-
-//     container.appendChild(greensquare);
-//     container.appendChild(yellowsquare);
-//     container.appendChild(redsquare);
-//     container.appendChild(bluesquare);
-//     container.appendChild(circle);
-
-//     main.appendChild(container)
-//}
 
 function criarModal () {
     const main = document.querySelector('#main');
@@ -105,11 +74,11 @@ function inicioJogo() {
     setTimeout(ordemCores(), 1000);
 }
 
-let ordemCor = [];
 
 function ordemCores() {
-    ordemCor.push(Math.floor(Math.random()*(4-1)+1))
-    setTimeout(brilhaCor, 2000);    
+    ordemCor.push(Math.floor(Math.random()*(4-1)+1));
+
+    return brilhaCor();    
 }
 
 function brilhaCor() {
@@ -120,36 +89,69 @@ function brilhaCor() {
     
     for (let i =0; i < ordemCor.length; i++) {
         if(ordemCor[i] == verde.id) {
-            verde.classList.add('activeGreen')
             console.log("verde")
+
+            setTimeout(()=>{
+                verde.classList.add('activeGreen')
+            }, 1000)
+
             setTimeout(() => {
-                verde.classList.remove('ActiveGreen')
+                verde.classList.remove('activeGreen')
             }, 2000);
+
         } else if (ordemCor[i] == amarelo.id) {
-            amarelo.classList.add('activeYellow')
             console.log("amarelo")
+            
+            setTimeout(()=>{
+                amarelo.classList.add('activeYellow')
+            }, 1000)
+
             setTimeout(() => {
-                verde.classList.remove('ActiveYellow')
+                verde.classList.remove('activeYellow')
             }, 2000);
+
         } else if (ordemCor[i] == vermelho.id) {
-            vermelho.classList.add('activeRed')
             console.log("vermelho")
+
+            setTimeout(()=>{
+            vermelho.classList.add('activeRed')
+            }, 1000)
+
             setTimeout(() => {
-                verde.classList.remove('ActiveRed')
+                verde.classList.remove('activeRed')
             }, 2000);
+
         } else if (ordemCor[i] == azul.id) {
-            azul.classList.add('activeBlue')
             console.log("azul")
+
+            setTimeout(()=>{
+            azul.classList.add('activeBlue')
+            },1000)
+
             setTimeout(() => {
-                verde.classList.remove('ActiveBlue')
+                verde.classList.remove('activeBlue')
             }, 2000);
         }
     }   
 }
+
 function getColorClicked(e){
     colorClicked.push(+e.target.id)
-    console.log(colorClicked);
+    verifyClick();
 }
 
+function verifyClick() {
+    console.log(ordemCor, colorClicked)
+    for(let i=0; i < ordemCor.length; i++){
+        if(ordemCor[i] === colorClicked[i]){
+            // console.log(ordemCor[i], colorClicked[i])
+            // console.log("acertou, mizeravi")
+            setTimeout(ordemCores), 2000;
+        } else {
+            //endGame();
+            // console.log("errou mula")
+        }
+    }
+}
 
 
