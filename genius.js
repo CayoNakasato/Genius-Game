@@ -1,4 +1,4 @@
-const colorClicked = [];
+let colorClicked = [];
 let ordemCor = [];
 
 
@@ -71,14 +71,14 @@ function inicioJogo() {
     interface.innerHTML = " ";
     interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
 
-    setTimeout(ordemCores(), 1000);
+    setTimeout(corAleatoria(), 1000);
 }
 
 
-function ordemCores() {
+function corAleatoria() {
     ordemCor.push(Math.floor(Math.random()*(4-1)+1));
-
-    return brilhaCor();    
+    // console.log(ordemCor)
+    brilhaCor();
 }
 
 function brilhaCor() {
@@ -91,9 +91,9 @@ function brilhaCor() {
         if(ordemCor[i] == verde.id) {
             console.log("verde")
 
-            setTimeout(()=>{
+            // setTimeout(()=>{
                 verde.classList.add('activeGreen')
-            }, 1000)
+            // }, 1000)
 
             setTimeout(() => {
                 verde.classList.remove('activeGreen')
@@ -102,9 +102,9 @@ function brilhaCor() {
         } else if (ordemCor[i] == amarelo.id) {
             console.log("amarelo")
             
-            setTimeout(()=>{
+            // setTimeout(()=>{
                 amarelo.classList.add('activeYellow')
-            }, 1000)
+            // }, 1000)
 
             setTimeout(() => {
                 verde.classList.remove('activeYellow')
@@ -113,9 +113,9 @@ function brilhaCor() {
         } else if (ordemCor[i] == vermelho.id) {
             console.log("vermelho")
 
-            setTimeout(()=>{
+            // setTimeout(()=>{
             vermelho.classList.add('activeRed')
-            }, 1000)
+            // }, 1000)
 
             setTimeout(() => {
                 verde.classList.remove('activeRed')
@@ -124,9 +124,9 @@ function brilhaCor() {
         } else if (ordemCor[i] == azul.id) {
             console.log("azul")
 
-            setTimeout(()=>{
+            // setTimeout(()=>{
             azul.classList.add('activeBlue')
-            },1000)
+            // },1000)
 
             setTimeout(() => {
                 verde.classList.remove('activeBlue')
@@ -136,22 +136,24 @@ function brilhaCor() {
 }
 
 function getColorClicked(e){
-    colorClicked.push(+e.target.id)
-    verifyClick();
+   colorClicked.push(+e.target.id)
+   verifyClick()
 }
 
 function verifyClick() {
-    console.log(ordemCor, colorClicked)
+    
+    console.log(colorClicked)
+
     for(let i=0; i < ordemCor.length; i++){
         if(ordemCor[i] === colorClicked[i]){
-            // console.log(ordemCor[i], colorClicked[i])
-            // console.log("acertou, mizeravi")
-            setTimeout(ordemCores), 2000;
+           
+            console.log("acertou, mizeravi")
+           
         } else {
-            //endGame();
-            // console.log("errou mula")
+            console.log("errou mula")
         }
     }
+    inicioJogo();
 }
 
 
