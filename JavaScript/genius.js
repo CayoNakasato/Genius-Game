@@ -1,12 +1,61 @@
 let colorClicked = [];
 let ordemCor = [];
+let record = 0;
+let currentPoints = 0;
+let playerName = '';
+
+function criarModal () {
+    const main = document.querySelector('#main');
+    main.innerHTML = ' ';
+
+    const input = document.createElement('input');
+    const modalSection = document.createElement('section');
+    const title = document.createElement('h1');
+    const form = document.createElement('form');
+    const label = document.createElement('label');
+
+    const button = document.createElement('button');
+
+    modalSection.id = "modalSection"
+    form.id = "form";
+    input.id = "inputName";
+    button.id = "button";
+
+    label.htmlFor = "inputName";
+    label.innerText = "Insira seu nome";
+    title.innerText = "GENIUS"
+    button.innerText = "INICIAR"
+    button.type = 'submit';
+
+    form.addEventListener('submit', (e) =>{
+       e.preventDefault();
+       getNameOfPlayer();
+       criarTabuleiro();
+    })
+
+    form.appendChild(label);
+    form.appendChild(input);
+    form.appendChild(button);
+
+    modalSection.appendChild(title);
+    modalSection.appendChild(form);
+
+    main.appendChild(modalSection);
+}
+
+criarModal();
+
+function getNameOfPlayer(){
+     playerName = document.getElementById('inputName').value;
+}
 
 function criarTabuleiro () {
     const main = document.querySelector('#main');
     const getInput = document.querySelector('#inputName');
+
     main.innerHTML = `
-    <h1>GENIUS GAME</h1>
-    <p>Acerte as cores na sequência <strong>correta</strong> para marcar pontos. Caso erre você perde o jogo!</p>
+    <h1 id = 'inGameTitle'>GENIUS GAME</h1>
+    <p id = 'descriptionInGame'>Acerte as cores na sequência <b>correta</b> para marcar pontos. Caso erre você perde o jogo!</p>
     <div class="container">
         <div id = '1' class="greensquare square"></div>
         <div id = '2' class="yellowsquare square"></div>
@@ -15,7 +64,9 @@ function criarTabuleiro () {
         <div id = 'interface' class="circle">Bem vindo ${getInput.value}!<br>Boa Sorte</div>
     </div>
     `
-    
+    const title = document.getElementById('inGameTitle');
+    console.log(title);
+
    setTimeout(inicioJogo, 3000);
     const getClickedgreen =  document.querySelector('.greensquare')
     getClickedgreen.addEventListener("click", getColorClicked )
@@ -30,42 +81,6 @@ function criarTabuleiro () {
     getClickedblue.addEventListener("click", getColorClicked )
 }
 
-function criarModal () {
-    const main = document.querySelector('#main');
-
-    const modalSection = document.createElement('section');
-    const title = document.createElement('h1');
-    const form = document.createElement('form');
-    const label = document.createElement('label');
-    const input = document.createElement('input');
-    input.id = "inputName";
-
-    const button = document.createElement('button');
-
-    modalSection.id = "modalSection"
-    form.id = "form";
-    input.id = "inputName";
-    button.id = "button";
-
-    label.htmlFor = "inputName";
-    label.innerText = "Insira seu nome";
-    title.innerText = "GENIUS"
-    button.innerText = "INICIAR"
-
-    button.addEventListener('click', criarTabuleiro)
-
-    form.appendChild(label);
-    form.appendChild(input);
-    form.appendChild(button);
-
-    modalSection.appendChild(title);
-    modalSection.appendChild(form);
-
-    main.appendChild(modalSection);
-}
-
-criarModal();
-
 function inicioJogo() {
     colorClicked = [];
     const interface = document.querySelector("#interface");
@@ -74,7 +89,6 @@ function inicioJogo() {
 
     setTimeout(corAleatoria(), 1000);
 }
-
 
 function corAleatoria() {
     ordemCor.push(Math.floor(Math.random()*(4-1)+1));
