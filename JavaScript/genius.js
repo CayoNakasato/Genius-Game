@@ -108,7 +108,6 @@ function brilhaCor() {
         let tempo = 1000;
         if(ordemCor[i] == verde.id) {
             
-
             setTimeout(()=>{
                verde.classList.add('activeGreen')
             }, 1500 + (i*tempo)) //
@@ -119,7 +118,6 @@ function brilhaCor() {
                 
         } if (ordemCor[i] == amarelo.id) {
            
-            
             setTimeout(()=>{
                 amarelo.classList.add('activeYellow')
             }, 1500 + (i* tempo) ) //
@@ -128,8 +126,7 @@ function brilhaCor() {
                 }, 1000 + (i* tempo));
                 
         } if (ordemCor[i] == vermelho.id) {
-           
-
+        
             setTimeout(()=>{
             vermelho.classList.add('activeRed')
             }, 1500+ (i* tempo))
@@ -139,8 +136,6 @@ function brilhaCor() {
             }, 1000+ (i* tempo));
 
         } if (ordemCor[i] == azul.id) {
-           
-
             setTimeout(()=>{
             azul.classList.add('activeBlue')
             },1500+ (i* tempo))
