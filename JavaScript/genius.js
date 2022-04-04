@@ -1,4 +1,4 @@
-const colorClicked = [];
+let colorClicked = [];
 let ordemCor = [];
 let record = 0;
 let currentPoints = 0;
