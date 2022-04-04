@@ -1,7 +1,6 @@
 let colorClicked = [];
 let ordemCor = [];
 
-
 function criarTabuleiro () {
     const main = document.querySelector('#main');
     const getInput = document.querySelector('#inputName');
@@ -16,6 +15,7 @@ function criarTabuleiro () {
         <div id = 'interface' class="circle">Bem vindo ${getInput.value}!<br>Boa Sorte</div>
     </div>
     `
+    
    setTimeout(inicioJogo, 3000);
     const getClickedgreen =  document.querySelector('.greensquare')
     getClickedgreen.addEventListener("click", getColorClicked )
@@ -67,6 +67,7 @@ function criarModal () {
 criarModal();
 
 function inicioJogo() {
+    colorClicked = [];
     const interface = document.querySelector("#interface");
     interface.innerHTML = " ";
     interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
@@ -88,72 +89,97 @@ function brilhaCor() {
     const azul = document.getElementById('4')
     
     for (let i =0; i < ordemCor.length; i++) {
+        let tempo = 1000;
         if(ordemCor[i] == verde.id) {
             console.log("verde")
 
-            // setTimeout(()=>{
-                verde.classList.add('activeGreen')
-            // }, 1000)
-
-            setTimeout(() => {
-                verde.classList.remove('activeGreen')
-            }, 2000);
-
-        } else if (ordemCor[i] == amarelo.id) {
+            setTimeout(()=>{
+               verde.classList.add('activeGreen')
+            }, 1500 + (i* tempo)) //
+               
+               setTimeout(() => {
+                   verde.classList.remove('activeGreen')
+                }, 1000 + (i*tempo));
+                
+        } if (ordemCor[i] == amarelo.id) {
             console.log("amarelo")
             
-            // setTimeout(()=>{
+            setTimeout(()=>{
                 amarelo.classList.add('activeYellow')
-            // }, 1000)
-
-            setTimeout(() => {
-                verde.classList.remove('activeYellow')
-            }, 2000);
-
-        } else if (ordemCor[i] == vermelho.id) {
+            }, 1500 + (i* tempo) ) //
+                setTimeout(() => {
+                    amarelo.classList.remove('activeYellow')
+                }, 1000 + (i* tempo));
+                
+        } if (ordemCor[i] == vermelho.id) {
             console.log("vermelho")
 
-            // setTimeout(()=>{
+            setTimeout(()=>{
             vermelho.classList.add('activeRed')
-            // }, 1000)
+            }, 1500+ (i* tempo))
 
             setTimeout(() => {
-                verde.classList.remove('activeRed')
-            }, 2000);
+                vermelho.classList.remove('activeRed')
+            }, 1000+ (i* tempo));
 
-        } else if (ordemCor[i] == azul.id) {
+        } if (ordemCor[i] == azul.id) {
             console.log("azul")
 
-            // setTimeout(()=>{
+            setTimeout(()=>{
             azul.classList.add('activeBlue')
-            // },1000)
+            },1500+ (i* tempo))
 
             setTimeout(() => {
-                verde.classList.remove('activeBlue')
-            }, 2000);
+                azul.classList.remove('activeBlue')
+            }, 1000+(i* tempo));
         }
     }   
 }
 
 function getColorClicked(e){
-   colorClicked.push(+e.target.id)
-   verifyClick()
+   colorClicked.push(+e.target.id);
+    //[1,2,3,4] NPC
+    //[1,3]
+   verifyClick();
 }
 
-function verifyClick() {
-    
-    console.log(colorClicked)
 
-    for(let i=0; i < ordemCor.length; i++){
+// function verifyLength () {
+//     if(ordemCor.length === colorClicked.length) {
+//         verifyClick();
+//     } 
+// }
+
+function verifyClick() {   
+    let count = 0;
+
+    for(let i=0; i < colorClicked.length; i++){
         if(ordemCor[i] === colorClicked[i]){
-           
-            console.log("acertou, mizeravi")
-           
+                count++             
         } else {
             console.log("errou mula")
+            return gameOver();
         }
     }
-    inicioJogo();
+    if (count == ordemCor.length) {
+       nextLevel();
+    }
 }
 
+function nextLevel() {
+    setTimeout(inicioJogo, 2000); 
+}
 
+function gameOver () {
+    ordemCor = [];
+    colorClicked = [];
+    const interface = document.querySelector(".circle");
+
+    interface.innerHTML = " "
+
+    const gameOverButton = document.createElement('button');
+    gameOverButton.innerText = "Tente Novamente"
+    gameOverButton.addEventListener('click', inicioJogo)
+    
+    interface.appendChild(gameOverButton);
+}
