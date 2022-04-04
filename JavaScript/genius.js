@@ -109,7 +109,7 @@ function brilhaCor() {
 
             setTimeout(()=>{
                verde.classList.add('activeGreen')
-            }, 1500 + (i* tempo)) //
+            }, 1500 + (i*tempo)) //
                
                setTimeout(() => {
                    verde.classList.remove('activeGreen')
@@ -152,27 +152,17 @@ function brilhaCor() {
 
 function getColorClicked(e){
    colorClicked.push(+e.target.id);
-    //[1,2,3,4] NPC
-    //[1,3]
    verifyClick();
 }
 
-
-// function verifyLength () {
-//     if(ordemCor.length === colorClicked.length) {
-//         verifyClick();
-//     } 
-// }
-
 function verifyClick() {   
     let count = 0;
-
     for(let i=0; i < colorClicked.length; i++){
         if(ordemCor[i] === colorClicked[i]){
                 count++             
         } else {
             console.log("errou mula")
-            return gameOver();
+            return endGame();
         }
     }
     if (count == ordemCor.length) {
@@ -182,18 +172,4 @@ function verifyClick() {
 
 function nextLevel() {
     setTimeout(inicioJogo, 2000); 
-}
-
-function gameOver () {
-    ordemCor = [];
-    colorClicked = [];
-    const interface = document.querySelector(".circle");
-
-    interface.innerHTML = " "
-
-    const gameOverButton = document.createElement('button');
-    gameOverButton.innerText = "Tente Novamente"
-    gameOverButton.addEventListener('click', inicioJogo)
-    
-    interface.appendChild(gameOverButton);
 }
