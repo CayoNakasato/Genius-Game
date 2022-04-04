@@ -25,7 +25,7 @@ function endGame(){
     title.innerText = "GENIUS"
     subtitulo.innerText = "Acerte as cores na sequência CORRETA para marcar pontos. Caso erre você perde o jogo!"
     btnPlayAgain.innerText = "Jogar Novamente"
-    info.innerText = `Você perdeu ${playerName}\n Teu record foi : x!\n Tua pontuação foi : x!`
+    info.innerText = `Você perdeu ${playerName}\nTua pontuação foi : ${currentPoints}!`
 
     green.id = '1';
     yellow.id = '2';

@@ -1,10 +1,14 @@
 let colorClicked = [];
 let ordemCor = [];
-let record = 0;
 let currentPoints = 0;
 let playerName = '';
 
+
 function criarModal () {
+    colorClicked = [];
+    ordemCor = [];
+    currentPoints = 0;
+
     const main = document.querySelector('#main');
     main.innerHTML = ' ';
 
@@ -64,8 +68,6 @@ function criarTabuleiro () {
         <div id = 'interface' class="circle">Bem vindo ${getInput.value}!<br>Boa Sorte</div>
     </div>
     `
-    const title = document.getElementById('inGameTitle');
-    console.log(title);
 
    setTimeout(inicioJogo, 3000);
     const getClickedgreen =  document.querySelector('.greensquare')
@@ -83,6 +85,7 @@ function criarTabuleiro () {
 
 function inicioJogo() {
     colorClicked = [];
+    record = 0;
     const interface = document.querySelector("#interface");
     interface.innerHTML = " ";
     interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
@@ -91,8 +94,7 @@ function inicioJogo() {
 }
 
 function corAleatoria() {
-    ordemCor.push(Math.floor(Math.random()*(4-1)+1));
-    // console.log(ordemCor)
+    ordemCor.push(Math.floor(Math.random()*(4-1) + 1));
     brilhaCor();
 }
 
@@ -105,7 +107,7 @@ function brilhaCor() {
     for (let i =0; i < ordemCor.length; i++) {
         let tempo = 1000;
         if(ordemCor[i] == verde.id) {
-            console.log("verde")
+            
 
             setTimeout(()=>{
                verde.classList.add('activeGreen')
@@ -116,7 +118,7 @@ function brilhaCor() {
                 }, 1000 + (i*tempo));
                 
         } if (ordemCor[i] == amarelo.id) {
-            console.log("amarelo")
+           
             
             setTimeout(()=>{
                 amarelo.classList.add('activeYellow')
@@ -126,7 +128,7 @@ function brilhaCor() {
                 }, 1000 + (i* tempo));
                 
         } if (ordemCor[i] == vermelho.id) {
-            console.log("vermelho")
+           
 
             setTimeout(()=>{
             vermelho.classList.add('activeRed')
@@ -137,7 +139,7 @@ function brilhaCor() {
             }, 1000+ (i* tempo));
 
         } if (ordemCor[i] == azul.id) {
-            console.log("azul")
+           
 
             setTimeout(()=>{
             azul.classList.add('activeBlue')
@@ -159,9 +161,9 @@ function verifyClick() {
     let count = 0;
     for(let i=0; i < colorClicked.length; i++){
         if(ordemCor[i] === colorClicked[i]){
-                count++             
+                count++
+                currentPoints++             
         } else {
-            console.log("errou mula")
             return endGame();
         }
     }
@@ -171,5 +173,5 @@ function verifyClick() {
 }
 
 function nextLevel() {
-    setTimeout(inicioJogo, 2000); 
+    setTimeout(inicioJogo, 1000); 
 }
