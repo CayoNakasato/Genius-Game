@@ -51,3 +51,36 @@ E assim por diante, até que o usuário erre a sequência.
 ## Envio
 
 Faça o push do código para o seu repositório GitHub e implemente-o GitHub pages. Coloque seu repositório como **Privado** e adicione em Configurações > Colaboradores e Times o time **team-m2-correcoes**. No Canvas, por favor, **envie sua url do GitHub Pages: (ex: https://nomedeusuario.github.io/<nome_do_projeto>)** e envie o link do seu repositório nos comentários, juntamente com o nome da dupla.
+
+
+//  function alo(){
+//      const container = document.createElement('div');
+//     const greensquare = document.createElement('div');
+//     const yellowsquare = document.createElement('div');
+//     const redsquare = document.createElement('div');
+//     const bluesquare = document.createElement('div');
+//     const circle = document.createElement('div');
+
+//     container.classList.add('container');
+//     greensquare.classList.add('greensquare square');
+//     yellowsquare.classList.add('yellowsquare square');
+//     redsquare.classList.add('redsquare square');
+//     bluesquare.classList.add('bluesquare square');
+//     circle.classList.add('cirlce');
+
+//     greensquare.id = "1";
+//     yellowsquare.id = "2";
+//     redsquare.id = "3";
+//     bluesquare.id = "4";
+//     circle.id = "interface";
+
+//     circle.innerText = `Bem vindo ${getInput.value}!<br>Boa Sorte`;
+
+//     container.appendChild(greensquare);
+//     container.appendChild(yellowsquare);
+//     container.appendChild(redsquare);
+//     container.appendChild(bluesquare);
+//     container.appendChild(circle);
+
+//     main.appendChild(container)
+//}
