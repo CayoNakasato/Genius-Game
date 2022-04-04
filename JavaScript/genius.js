@@ -96,6 +96,7 @@ function inicioJogo() {
 function corAleatoria() {
     ordemCor.push(Math.floor(Math.random()*(4-1) + 1));
     brilhaCor();
+    currentPoints++ 
 }
 
 function brilhaCor() {
@@ -156,8 +157,7 @@ function verifyClick() {
     let count = 0;
     for(let i=0; i < colorClicked.length; i++){
         if(ordemCor[i] === colorClicked[i]){
-                count++
-                currentPoints++             
+                count++            
         } else {
             return endGame();
         }
