@@ -82,16 +82,18 @@ function criarTabuleiro () {
 }
 
 function inicioJogo() {
+    colorClicked = [];
     const interface = document.querySelector("#interface");
     interface.innerHTML = " ";
     interface.innerText = "PRESTE ATENÇÃO A ORDEM DAS CORES";
 
-    setTimeout(ordemCores(), 1000);
+    setTimeout(corAleatoria(), 1000);
 }
 
-function ordemCores() {
-    ordemCor.push(Math.floor(Math.random()*(4-1)+1))
-    setTimeout(brilhaCor, 2000);    
+function corAleatoria() {
+    ordemCor.push(Math.floor(Math.random()*(4-1)+1));
+    // console.log(ordemCor)
+    brilhaCor();
 }
 
 function brilhaCor() {
@@ -100,41 +102,74 @@ function brilhaCor() {
     const vermelho = document.getElementById('3')
     const azul = document.getElementById('4')
     
-    for (let i = 0; i < ordemCor.length; i++) {
+    for (let i =0; i < ordemCor.length; i++) {
+        let tempo = 1000;
         if(ordemCor[i] == verde.id) {
-            verde.classList.add('activeGreen')
             console.log("verde")
-            setTimeout(() => {
-                verde.classList.remove('activeGreen')
-            }, 2000);
-        } else if (ordemCor[i] == amarelo.id) {
-            amarelo.classList.add('activeYellow')
+
+            setTimeout(()=>{
+               verde.classList.add('activeGreen')
+            }, 1500 + (i*tempo)) //
+               
+               setTimeout(() => {
+                   verde.classList.remove('activeGreen')
+                }, 1000 + (i*tempo));
+                
+        } if (ordemCor[i] == amarelo.id) {
             console.log("amarelo")
-            setTimeout(() => {
-                verde.classList.remove('activeYellow')
-            }, 2000);
-        } else if (ordemCor[i] == vermelho.id) {
-            vermelho.classList.add('activeRed')
+            
+            setTimeout(()=>{
+                amarelo.classList.add('activeYellow')
+            }, 1500 + (i* tempo) ) //
+                setTimeout(() => {
+                    amarelo.classList.remove('activeYellow')
+                }, 1000 + (i* tempo));
+                
+        } if (ordemCor[i] == vermelho.id) {
             console.log("vermelho")
+
+            setTimeout(()=>{
+            vermelho.classList.add('activeRed')
+            }, 1500+ (i* tempo))
+
             setTimeout(() => {
-                verde.classList.remove('activeRed')
-            }, 2000);
-        } else if (ordemCor[i] == azul.id) {
-            azul.classList.add('activeBlue')
+                vermelho.classList.remove('activeRed')
+            }, 1000+ (i* tempo));
+
+        } if (ordemCor[i] == azul.id) {
             console.log("azul")
+
+            setTimeout(()=>{
+            azul.classList.add('activeBlue')
+            },1500+ (i* tempo))
+
             setTimeout(() => {
-                verde.classList.remove('activeBlue')
-            }, 2000);
+                azul.classList.remove('activeBlue')
+            }, 1000+(i* tempo));
         }
     }   
 }
 
 function getColorClicked(e){
-    colorClicked.push(+e.target.id)
-    console.log(colorClicked);
+   colorClicked.push(+e.target.id);
+   verifyClick();
 }
 
+function verifyClick() {   
+    let count = 0;
+    for(let i=0; i < colorClicked.length; i++){
+        if(ordemCor[i] === colorClicked[i]){
+                count++             
+        } else {
+            console.log("errou mula")
+            return endGame();
+        }
+    }
+    if (count == ordemCor.length) {
+       nextLevel();
+    }
+}
 
-
-
-
+function nextLevel() {
+    setTimeout(inicioJogo, 2000); 
+}
